@@ -4,7 +4,7 @@ ACK = b'\x06'
 NAK = b'\x15'
 
 
-def lrc(data):
+def xor_control_sum(data):
     j = 0
     for i in data:
         j = j ^ i

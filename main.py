@@ -12,7 +12,7 @@ with serial.Serial('/dev/ttyACM0', 115200, timeout=1) as ser:
         PullPaper(1),
         PrintLine('Мой дядя самых честных правил'),
         PrintLine('Когда не в шутку занемог'),
-        #CassirReport(),
+        #CashierReport(),
     )
 
     pos = Pos(ser)

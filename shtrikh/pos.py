@@ -1,4 +1,4 @@
-from shtrikh import STX, ACK, NAK, ENQ, lrc
+from shtrikh import STX, ACK, NAK, ENQ, xor_control_sum
 
 
 class Pos():
@@ -16,7 +16,7 @@ class Pos():
             length = self.ser.read()
             data = self.ser.read(int.from_bytes(length, byteorder='big'))
             cs = self.ser.read()  # todo check control sum
-            if lrc(length + data).to_bytes(1, "big") == cs:
+            if xor_control_sum(length + data).to_bytes(1, "big") == cs:
                 self.ser.write(ACK)
                 self.parse_data(data)
                 return True
