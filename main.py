@@ -1,6 +1,6 @@
 import serial
 
-from shtrikh.commands import Beep, PullPaper, PrintLine, PrintBoldLine
+from shtrikh.commands import Beep, PullPaper, PrintLine, PrintBoldLine, DailyXReport
 
 from shtrikh.pos import Pos
 
@@ -8,13 +8,14 @@ with serial.Serial('/dev/ttyACM0', 115200, timeout=1) as ser:
     print(ser.name)
     commands = (
         Beep(),
-        PrintBoldLine('Евгений Онегин.'),
+        #PrintBoldLine('Евгений Онегин.'),
         PullPaper(1),
-        PrintLine('Мой дядя самых честных правил'),
-        PrintLine('Когда не в шутку занемог'),
+        #PrintLine('Мой дядя самых честных правил'),
+        #PrintLine('Когда не в шутку занемог'),
         #CashierReport(),
     )
 
     pos = Pos(ser)
-    for current_command in commands:
-        pos.proccess(current_command)
+    #for current_command in commands:
+    #    pos.proccess(current_command)
+    pos.proccess(DailyXReport())

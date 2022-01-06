@@ -54,6 +54,13 @@ class PullPaper(Command):
         self.data += lines_count.to_bytes(1, byteorder="big")
 
 
+class DailyXReport(Command):
+    def __init__(self):
+        super().__init__()
+        self.data.append(0x40)
+        self.add_admin_password()
+
+
 class CashierReport(Command):
     def __init__(self):
         super().__init__()
